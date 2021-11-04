@@ -194,6 +194,7 @@
         gigagenie.voice.getVoiceText(
           options,
           function (result_cd, result_msg, extra) {
+            sendTTS("start");
             var ws = new WebSocket("ws://flyingstone.me:3000");
             if (result_cd === 200) {
               // 연결이 수립되면 서버에 메시지를 전송한다
