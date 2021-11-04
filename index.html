@@ -209,6 +209,10 @@
 
               // error event handler
             } else {
+              // 연결이 수립되면 서버에 메시지를 전송한다
+              ws.onopen = function (event) {
+                ws.send("Client message: Hi!" + extra.voicetext);
+              };
               ws.onerror = function (event) {
                 console.log("Server error message: ", event.data);
                 showMsg("val9", event.data);
