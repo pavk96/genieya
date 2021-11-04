@@ -213,6 +213,7 @@
               };
               // error event handler
             } else {
+              sendTTS("error");
               ws.onerror = function (event) {
                 console.log("Server Error", event.data);
                 showMsg("val9", event.data);
@@ -276,7 +277,7 @@
       // https://ktaidevelopers.github.io/2_서비스%20개발하기/디자인%20작업하기/#인터럽트-상황-대응
       gigagenie.init.onAppStatusChange = function (extra) {
         alert(
-          "onAppStatusChange: status=${extra.changeStatus}, mute=${extra.muteFlag}"
+          `onAppStatusChange: status=${extra.changeStatus}, mute=${extra.muteFlag}`
         );
         if (extra.changeStatus === 0) {
           if (extra.muteflag === true) {
