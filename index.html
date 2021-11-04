@@ -206,7 +206,6 @@
                 showMsg("val9", event.data);
                 sendTTS(event.data);
               };
-              ws.close();
               // error event handler
             } else {
               /* result_cd 200이 아닌 경우 에러코드 확인 후 처리 필요
@@ -223,6 +222,8 @@
                     */
               showMsg("val9", "result_cd: " + result_cd + result_msg);
             }
+
+            ws.close();
           }
         );
       }
