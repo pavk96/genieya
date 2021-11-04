@@ -32,11 +32,6 @@
       function init() {
         var ws = new WebSocket("ws://flyingstone.me:3000");
 
-        // 연결이 수립되면 서버에 메시지를 전송한다
-        ws.onopen = function (event) {
-          ws.send("Client message: Hi!");
-        };
-
         var options = {};
         options.keytype = "GBOXDEVM"; // 개발(GBOXDEVM) 또는 상용(GBOXCOMM) 키 종류 입력
         options.apikey = "RTUwMDQzNzl8R0JPWERFVk18MTYzNDExNDMyMjczOQ=="; // API link에서 발급받은 개발 key";
@@ -203,6 +198,10 @@
           function (result_cd, result_msg, extra) {
             if (result_cd === 200) {
               showMsg("val9", extra.voicetext);
+              // 연결이 수립되면 서버에 메시지를 전송한다
+              ws.onopen = function (event) {
+                ws.send("Client message: Hi!" + extra.voicetext);
+              };
               ws.send(extra.voicetext);
               // 서버로 부터 메시지를 수신한다
               ws.onmessage = function (event) {
