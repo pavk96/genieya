@@ -196,7 +196,7 @@
 
       function getVoiceText() {
         var options = {};
-        options.voicemsg = "원하시는 게임 카테고리를 말해주세요.";
+        options.voicemsg = "a";
         // 2-1 gigagenie.voice.getVoiceText
         gigagenie.voice.getVoiceText(
           options,
@@ -207,12 +207,13 @@
               // 서버로 부터 메시지를 수신한다
               ws.onmessage = function (event) {
                 console.log("Server message: ", event.data);
-                sendTTS(event.data);
+                showMsg("val9", event.data);
               };
 
               // error event handler
               ws.onerror = function (event) {
                 console.log("Server error message: ", event.data);
+                showMsg("val9", event.data);
               };
             } else {
               /* result_cd 200이 아닌 경우 에러코드 확인 후 처리 필요
